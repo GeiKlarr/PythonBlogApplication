@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title%} Create A Profile {% endblock %}
+{% block content%}
+
+
+{% if user.is_authenticated %}
+<body style="background-color: #17202A;">
+<div class="container d-flex justify-content-center align-items-center flex-column">
+<h1> Create A Profile </h1> <!-- a comment in html -->
+
+<div class="form-group">
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.as_p}}
+
+    <button class="btn btn-secondary">Create profile</button>
+</div>
+</div>
+
+</body>
+{% else %}
+
+<h1> You need to login first </h1>
+
+{% endif %}
+
+{% endblock %}

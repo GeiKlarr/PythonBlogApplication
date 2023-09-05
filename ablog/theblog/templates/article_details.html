@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title%} {{post.title_tag}} {% endblock %}
+{% block content%}
+
+user: {{ user.id}}
+poster: {{ post.author.id}}
+
+<body style="background-color: #17202A;">
+<h1> {{post.title}}</h1>
+<small>By: {{post.author.first_name}} {{post.author.last_name}} - {{post.category}} - {{post.post_date}} 
+  {% if user.is_authenticated %}
+        {% if user.id == post.author.id %}
+        - <a href="{% url 'post:update_post' post.pk %}"> (Edit) </a> </small> - <a href="{% url 'post:delete_post' post.pk %}"> (Delete) </a> </small><br/>
+        {% endif %}
+  {% endif %}
+
+<hr>
+<br/>
+
+{% if post.header_image %}
+<img src="{{post.header_image.url}}" class="img-fluid" alt=""> </br>
+{{post.body|safe}}
+{% endif %}
+
+
+<br/><br/>
+
+<a href="{% url 'post:home' %}" class="btn btn-secondary"> Back </a>
+</body>
+{% endblock %}

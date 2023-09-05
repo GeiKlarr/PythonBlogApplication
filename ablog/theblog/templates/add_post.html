@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title%} Post something! {% endblock %}
+{% block content%}
+
+
+{% if user.is_authenticated %}
+{{user.first_name}}
+<body style="background-color: #17202A;">
+<div class="container d-flex justify-content-center align-items-center flex-column">
+<h1> Post a blog </h1> <!-- a comment in html -->
+
+<div class="form-group">
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.media}}
+    {{form.as_p}}
+
+    <button class="btn btn-secondary">Post</button>
+</div>
+</div>
+
+    
+
+<script>
+    var name = "{{user.id}}";
+    document.getElementById("poster").value
+    = name
+</script>
+</body>
+{% else %}
+
+<h1> You need to login first </h1>
+
+{% endif %}
+
+{% endblock %}

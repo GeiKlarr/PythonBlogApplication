@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title%} Update profile {% endblock %}
+{% block content%}
+<body style="background-color: #17202A;">
+<h1> Update profile </h1> <!-- a comment in html -->
+
+{% if user.profile.profile_pic%}
+<div class="d-flex justify-content-start align-items-center flex-column">
+<a href="{% url 'members:change_picture' user.id  %}"><img  src="{{user.profile.profile_pic.url}}" alt="..." class="rounded-circle" 
+style="width: 180px; height: 180px;"></a>
+<br>
+{{ user.profile.user}}
+</div>
+
+{%else%}
+<div class="d-flex justify-content-start align-items-center flex-column">
+    <a href="{% url 'members:add_picture' user.id  %}"><img  src="{% static 'theblog/images/1.jpg'%}" alt="..." class="rounded-circle" 
+    style="width: 180px; height: 180px;"></a>
+    <br>
+    {{ user.profile.user}}
+    </div>
+
+{% endif%}
+<hr>
+<div class="form-group">
+<form method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <a href="http://127.0.0.1:8000/members/password/"> Change password </a>
+    <br>
+    <button class="btn btn-secondary mt-3">Update profile</button>
+</div>
+</body>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title%} Comment something! {% endblock %}
+{% block content%}
+
+<body style="background-color: #17202A;">
+
+<div class="container d-flex justify-content-center align-items-center flex-column">
+<h1> Comment</h1> <!-- a comment in html -->
+
+<div class="form-group">
+<form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+    {{form.media}}
+    {{form.as_p}}
+    <button class="btn btn-secondary">Post</button>
+</div>
+</div>
+<body>
+<script>
+    var name = "{{user.first_name}}";
+    document.getElementById("commenter").value
+    = name
+</script>
+
+
+{% endblock %}

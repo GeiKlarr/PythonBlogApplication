@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title%} Login {% endblock %}
+{% block content%}
+<body style="background-color: #17202A;">
+
+
+
+<div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        One of three columns
+      </div>
+        <div class="col-sm-6 align-items-center">
+            <div class="container-fluid d-flex justify-content-center align-items-center flex-column min-vh-100">
+                <h2>Login</h2>
+                <div class="form-group">
+                    <form method="POST">
+                        {% csrf_token %}
+                        {{form.as_p}}
+                    
+                        <button class="btn btn-secondary">Login</button>
+                    </div>
+                </div>
+        </div>
+
+      <div class="col-sm-3">
+        One of three columns
+      </div>
+    </div>
+  </div>
+
+
+</body>
+
+{% endblock %}

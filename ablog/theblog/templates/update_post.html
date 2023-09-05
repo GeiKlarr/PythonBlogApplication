@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title%} Edit post {% endblock %}
+{% block content%}
+
+ {% if user.is_authenticated %}
+ <body style="background-color: #17202A;">
+<h1> Update post </h1> <!-- a comment in html -->
+
+<div class="form-group">
+<form method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+
+    <button class="btn btn-secondary">Update</button>
+</div>
+</body>
+{% else %}
+
+<h1> You need to login first </h1>
+
+
+{% endif %}
+
+{% endblock %}

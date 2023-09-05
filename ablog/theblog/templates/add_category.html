@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title%} Add Category {% endblock %}
+{% block content%}
+
+
+ {% if user.is_authenticated %}
+<h1> Add a category </h1> <!-- a comment in html -->
+
+<div class="form-group">
+<form method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button class="btn btn-secondary">Add</button>
+</div>
+
+{% else %}
+
+<h1> You need to login first </h1>
+
+{% endif %}
+
+{% endblock %}

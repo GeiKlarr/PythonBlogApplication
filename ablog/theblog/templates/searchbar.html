@@ -1,0 +1,54 @@
+{% extends "base.html" %} 
+{% block title%} Search{% endblock %}
+{% block content%}
+
+<body style="background-color: #17202a">
+  {% if searched %}
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12 bg-dark h-100 d-inline-block">
+        <h4>Results for {{searched}}</h4>
+        {% for user in users %}
+        <div class="container justify-content-start">
+          
+          <div class="row">
+            <div class="col bg-dark">
+              <div class="card bg-dark my-2">
+                <div class="card-body bg-dark">
+                  <a href="{% url 'members:show_profile' user.id %}"> {{user}}</a>
+                  <br />
+                </div>
+              </div>
+            </div>
+            {% if user.profile.profile_pic.url %}
+            <div class="col">
+              <div class="card bg-dark my-2">
+                <div class="card-body bg-dark">
+            
+              <div class="d-flex justify-content-start align-items-center flex-column">
+                <a href="{% url 'members:show_profile' user.id  %}"><img  src="{{user.profile.profile_pic.url}}" alt="..." class="rounded-circle" 
+                style="width: 180px; height: 180px;"></a>
+                <br>
+                <h3>{{user}}</h3>
+                <p> Followed by {{ user.profile.total_followers }} users</p>
+                </div>
+               
+              </div>
+            </div>
+        
+            </div>
+            {% endif %}
+
+            </div>
+          </div>
+
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  {% else %}
+  <h1>You forgot to search</h1>
+  {% endif %}
+</body>
+{% endblock %}

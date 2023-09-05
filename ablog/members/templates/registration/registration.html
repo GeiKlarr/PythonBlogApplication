@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title%} Register {% endblock %}
+{% block content%}
+<body style="background-color: #17202A;">
+
+<div class="container">
+    <div class="row">
+      <div class="col-sm">
+        One of three columns
+      </div>
+      <div class="col-sm-5 container-fluid d-flex justify-content-center align-items-center flex-column min-vh-100">
+        <h2>Register</h2>
+        <div class="form-group">
+            <form method="POST">
+                {% csrf_token %}
+                {{form.as_p}}
+            
+                <button class="btn btn-secondary">Sign up</button>
+            </div>
+      </div>
+      <div class="col-sm">
+        One of three columns
+      </div>
+    </div>
+  </div>
+<body>
+{% endblock %}
